@@ -1,0 +1,205 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Para Danae</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Jost:wght@400;500&display=swap">
+<style>
+/* Layout: one centered column. Name and bouquet open the page, the letter sits below on a deep wine panel, petals drift behind everything. Single deliberate dark red look. */
+:root {
+  color-scheme: dark;
+  --bg: #1a0508;
+  --bg-glow: #3a0c16;
+  --panel: #2a0a11;
+  --panel-edge: #5a1a26;
+  --red: #d7263d;
+  --rose: #f4a3b0;
+  --ink: #fbe9ea;
+  --muted: #d9a3aa;
+  --leaf: #3f8a52;
+  --stem: #2f6b3f;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-label: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  background: radial-gradient(120% 70% at 50% 0%, var(--bg-glow) 0%, var(--bg) 62%) no-repeat, var(--bg);
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-display);
+  padding-block: 40px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  min-height: 100%;
+}
+#petals { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+main { position: relative; z-index: 1; max-width: 620px; margin-inline: auto; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+
+.hero { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; min-width: 0; }
+.eyebrow { font-family: var(--font-label); font-weight: 500; font-size: 0.8rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--rose); margin: 0; }
+h1 { font-style: italic; font-weight: 600; font-size: clamp(4.2rem, 22vw, 7.5rem); line-height: 1; margin: 0; color: var(--ink); text-wrap: balance; letter-spacing: -0.01em; }
+.bouquet { width: min(100%, 380px); height: auto; margin-top: 8px; overflow: visible; }
+
+.sway { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 6s ease-in-out infinite alternate; }
+.sway.b { animation-duration: 7.5s; animation-delay: -2s; }
+.sway.c { animation-duration: 6.8s; animation-delay: -4s; }
+.sway.d { animation-duration: 8.2s; animation-delay: -1s; }
+@keyframes sway { from { transform: rotate(-1.6deg); } to { transform: rotate(1.6deg); } }
+
+.divider { display: flex; align-items: center; gap: 14px; width: 100%; max-width: 360px; }
+.divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--panel-edge)); }
+.divider::after { background: linear-gradient(270deg, transparent, var(--panel-edge)); }
+.divider svg { width: 26px; height: 26px; flex: none; }
+
+.letter {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--panel-edge);
+  border-radius: 6px;
+  padding: clamp(24px, 6vw, 44px);
+  display: flex; flex-direction: column; gap: 1.4em;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+.letter p { margin: 0; font-size: clamp(1.28rem, 4.6vw, 1.5rem); line-height: 1.55; font-weight: 500; color: var(--ink); max-width: 36em; }
+.letter .name { font-style: italic; color: var(--rose); }
+.letter .last { font-style: italic; font-size: clamp(1.45rem, 5.4vw, 1.8rem); line-height: 1.4; color: var(--rose); }
+.sign { font-family: var(--font-label); font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin: 0; }
+
+@media (prefers-reduced-motion: reduce) { .sway { animation: none; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="petalGrad" cx="50%" cy="85%" r="80%">
+      <stop offset="0%" stop-color="#8f0f23"/>
+      <stop offset="60%" stop-color="#d7263d"/>
+      <stop offset="100%" stop-color="#f0566a"/>
+    </radialGradient>
+    <radialGradient id="innerGrad" cx="50%" cy="80%" r="80%">
+      <stop offset="0%" stop-color="#6e0a1b"/>
+      <stop offset="100%" stop-color="#b81830"/>
+    </radialGradient>
+    <symbol id="bloom" viewBox="-50 -50 100 100">
+      <g fill="url(#petalGrad)" stroke="#7a0c1e" stroke-width="0.8" stroke-linejoin="round">
+        <path id="pt" d="M0 0 C-24 -16 -24 -46 0 -48 C24 -46 24 -16 0 0Z"/>
+        <path d="M0 0 C-24 -16 -24 -46 0 -48 C24 -46 24 -16 0 0Z" transform="rotate(72)"/>
+        <path d="M0 0 C-24 -16 -24 -46 0 -48 C24 -46 24 -16 0 0Z" transform="rotate(144)"/>
+        <path d="M0 0 C-24 -16 -24 -46 0 -48 C24 -46 24 -16 0 0Z" transform="rotate(216)"/>
+        <path d="M0 0 C-24 -16 -24 -46 0 -48 C24 -46 24 -16 0 0Z" transform="rotate(288)"/>
+      </g>
+      <g fill="url(#innerGrad)" stroke="#5a0816" stroke-width="0.6" stroke-linejoin="round" transform="scale(0.62)">
+        <path d="M0 0 C-24 -16 -24 -46 0 -48 C24 -46 24 -16 0 0Z" transform="rotate(36)"/>
+        <path d="M0 0 C-24 -16 -24 -46 0 -48 C24 -46 24 -16 0 0Z" transform="rotate(108)"/>
+        <path d="M0 0 C-24 -16 -24 -46 0 -48 C24 -46 24 -16 0 0Z" transform="rotate(180)"/>
+        <path d="M0 0 C-24 -16 -24 -46 0 -48 C24 -46 24 -16 0 0Z" transform="rotate(252)"/>
+        <path d="M0 0 C-24 -16 -24 -46 0 -48 C24 -46 24 -16 0 0Z" transform="rotate(324)"/>
+      </g>
+      <circle r="5" fill="#f2c14e"/>
+      <circle r="2.2" fill="#a8741a"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+  <header class="hero">
+    <p class="eyebrow">Para</p>
+    <h1>Danae</h1>
+    <svg class="bouquet" viewBox="0 0 360 310" role="img" aria-label="Un ramo de flores rojas">
+      <g fill="none" stroke="var(--stem)" stroke-width="4" stroke-linecap="round">
+        <path class="sway d" d="M180 300 C150 272 92 242 56 204"/>
+        <path class="sway d" d="M180 300 C210 272 268 242 304 204"/>
+        <path class="sway b" d="M180 300 C170 242 130 184 105 140"/>
+        <path class="sway c" d="M180 300 C190 242 230 184 255 140"/>
+        <path class="sway" d="M180 300 C180 224 180 160 180 108"/>
+      </g>
+      <g fill="var(--leaf)">
+        <path d="M172 236 C140 232 126 212 124 196 C150 198 168 214 172 236Z"/>
+        <path d="M188 224 C220 220 234 200 236 184 C210 186 192 202 188 224Z"/>
+        <path d="M150 272 C124 276 100 266 90 252 C114 248 140 256 150 272Z"/>
+        <path d="M210 272 C236 276 260 266 270 252 C246 248 220 256 210 272Z"/>
+        <path d="M178 180 C160 170 158 150 162 138 C176 146 182 162 178 180Z"/>
+      </g>
+      <g class="sway d"><use href="#bloom" x="26" y="174" width="60" height="60"/></g>
+      <g class="sway d"><use href="#bloom" x="274" y="174" width="60" height="60"/></g>
+      <g class="sway b"><use href="#bloom" x="65" y="100" width="80" height="80"/></g>
+      <g class="sway c"><use href="#bloom" x="215" y="100" width="80" height="80"/></g>
+      <g class="sway"><use href="#bloom" x="130" y="30" width="100" height="100"/></g>
+      <path d="M150 286 C165 296 195 296 210 286 L214 300 C196 310 164 310 146 300Z" fill="#a31228"/>
+    </svg>
+  </header>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="-50 -50 100 100"><use href="#bloom" x="-50" y="-50" width="100" height="100"/></svg>
+  </div>
+
+  <article class="letter">
+    <p>Sé que este camino no ha sido nada fácil, pero no te imaginas cuánto me duele cuando peleamos y no logramos entendernos a la primera. Sé que la distancia pesa un montón, pero nada en este mundo me haría dejarte sola. Tú sabes muy bien que siempre vas a ser el amor de mi vida.</p>
+    <p><span class="name">Mi wawa</span>, de verdad eres mi mundo entero. Ya no quiero que nos sigamos desgastando por pequeñeces que no valen la pena, solo nos hacemos mal y no tiene sentido. Quiero cuidar con todo lo que tengo lo que somos, porque mi sueño contigo sigue intacto.</p>
+    <p class="last">Eres la mujer con la que quiero despertar cada mañana y la mamá que quiero para mis hijos.</p>
+  </article>
+</main>
+
+<canvas id="petals" aria-hidden="true"></canvas>
+
+<script>
+(function () {
+  var canvas = document.getElementById('petals');
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var petals = [];
+  var colors = ['rgba(215,38,61,', 'rgba(240,86,106,', 'rgba(143,15,35,', 'rgba(244,163,176,'];
+
+  function resize() {
+    w = window.innerWidth; h = window.innerHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function make(initial) {
+    return {
+      x: Math.random() * w,
+      y: initial ? Math.random() * h : -20,
+      s: 6 + Math.random() * 9,
+      vy: 0.35 + Math.random() * 0.55,
+      vx: (Math.random() - 0.5) * 0.3,
+      r: Math.random() * Math.PI * 2,
+      vr: (Math.random() - 0.5) * 0.02,
+      ph: Math.random() * Math.PI * 2,
+      c: colors[Math.floor(Math.random() * colors.length)],
+      a: 0.25 + Math.random() * 0.35
+    };
+  }
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < petals.length; i++) {
+      var p = petals[i];
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.r);
+      ctx.fillStyle = p.c + p.a + ')';
+      ctx.beginPath();
+      ctx.ellipse(0, 0, p.s * 0.55, p.s, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+  function step() {
+    for (var i = 0; i < petals.length; i++) {
+      var p = petals[i];
+      p.ph += 0.01;
+      p.x += p.vx + Math.sin(p.ph) * 0.4;
+      p.y += p.vy;
+      p.r += p.vr;
+      if (p.y > h + 20) petals[i] = make(false);
+    }
+    draw();
+    requestAnimationFrame(step);
+  }
+
+  resize();
+  var count = w < 500 ? 18 : 30;
+  for (var i = 0; i < count; i++) petals.push(make(true));
+  window.addEventListener('resize', function () { resize(); if (reduce) draw(); });
+  if (reduce) { draw(); } else { requestAnimationFrame(step); }
+})();
+</script>
+
+</body></html>
